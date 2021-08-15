@@ -16,6 +16,5 @@ public interface HashtagRepository extends JpaRepository<Hashtags, String> {
 	
 	@Query("select h.hashtag from hashtag h order by h.count desc")
 	public List<String> getTrendingHashtag();
-	
-	
+
 }

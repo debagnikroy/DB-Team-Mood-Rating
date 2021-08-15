@@ -7,13 +7,15 @@ import com.team6.SurveyService.dto.Survey;
 import com.team6.SurveyService.dto.SurveyId;
 import com.team6.SurveyService.service.HashtagServiceImpl;
 import com.team6.SurveyService.service.SurveyServiceImpl;
-import com.team6.SurveyService.util.getHashtagFromReason;
+import com.team6.SurveyService.util.HashtagUtil;
+import com.team6.Surveyservice.util.TestHashtagUtil;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestTemplate;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
 
 import java.sql.Timestamp;
 import java.util.*;
@@ -36,16 +38,20 @@ public class TestSurveyService {
     @InjectMocks
     private SurveyServiceImpl surveyServiceImpl;
 
-    private Survey survey1,survey2;
+    /**/
 
-    TestSurveyService(){
+    private static Survey survey1;
+    private static Survey survey2;
+    @BeforeAll
+    public static void setup(){
         Timestamp time=new Timestamp(System.currentTimeMillis());
         SurveyId surveyId1=new SurveyId();
         SurveyId surveyId2=new SurveyId();
         surveyId1.setEmail("test@gmail.com");
         surveyId1.setEmail("test@gmail.com");
-        survey1 = new Survey(surveyId1,10,"#test1","Reason1");
-        survey2 = new Survey(surveyId2,5,"#test2","Reason2");
+
+        survey1 =new Survey(surveyId1,10,"#test1","Reason1");
+        survey2 =new Survey(surveyId2,5,"#test2","Reason2");
     }
 
     @Test
@@ -125,7 +131,7 @@ public class TestSurveyService {
         String reason = survey.getReason();
 
 //		function To seperate hashtags and reason
-        List<String> result = new getHashtagFromReason().getHashTags(reason);
+        List<String> result = new HashtagUtil().getHashTagsFromReason(reason);
 
         result.addAll(Arrays.asList(survey.getHashtag().split(",")));
 

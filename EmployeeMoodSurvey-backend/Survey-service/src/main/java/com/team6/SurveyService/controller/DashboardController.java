@@ -2,6 +2,7 @@ package com.team6.SurveyService.controller;
 
 import java.util.List;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,15 +17,20 @@ import com.team6.SurveyService.dto.Survey;
 import com.team6.SurveyService.service.HashtagService;
 import com.team6.SurveyService.service.SurveyService;
 
+
 @RestController()
 @RequestMapping("/api/dashboard")
 public class DashboardController {
 
-	@Autowired
 	private SurveyService surveyService;
 	
-	@Autowired
 	private HashtagService hashtagService;
+
+	@Autowired
+	public DashboardController(SurveyService surveyService,HashtagService hashtagService){
+		this.surveyService=surveyService;
+		this.hashtagService=hashtagService;
+	}
 
 //	get all response
 	@GetMapping("/survey")

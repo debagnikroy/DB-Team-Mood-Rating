@@ -1,9 +1,7 @@
 package com.team6.SurveyService.service;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,8 +10,7 @@ import com.team6.SurveyService.HashtagRepository.HashtagRepository;
 import com.team6.SurveyService.SurveyRepository.SurveyRepository;
 import com.team6.SurveyService.dto.Hashtags;
 import com.team6.SurveyService.dto.Survey;
-import com.team6.SurveyService.dto.SurveyId;
-import com.team6.SurveyService.util.getHashtagFromReason;
+import com.team6.SurveyService.util.HashtagUtil;
 
 
 @Service
@@ -52,7 +49,7 @@ public class SurveyServiceImpl implements SurveyService {
 		String reason = survey.getReason();
 
 //		function To seperate hashtags and reason
-		List<String> result = new getHashtagFromReason().getHashTags(reason);
+		List<String> result = new HashtagUtil().getHashTagsFromReason(reason);
 		
 		result.addAll(Arrays.asList(survey.getHashtag().split(",")));
 		

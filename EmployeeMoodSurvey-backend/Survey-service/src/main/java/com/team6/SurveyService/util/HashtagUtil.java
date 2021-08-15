@@ -1,10 +1,14 @@
 package com.team6.SurveyService.util;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class getHashtagFromReason {
-	public List<String> getHashTags(String reason) {
+
+public class HashtagUtil {
+	public List<String> getHashTagsFromReason(String reason) {
 		List<String> result = new ArrayList<>();
 
 		String[] words = reason.split(" ");
@@ -13,8 +17,6 @@ public class getHashtagFromReason {
 				result.add(w);
 			}
 		}
-
-
 		return result;
 	}
 }
