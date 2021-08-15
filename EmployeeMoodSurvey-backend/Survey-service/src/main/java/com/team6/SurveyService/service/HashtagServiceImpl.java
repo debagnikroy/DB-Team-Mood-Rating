@@ -14,8 +14,17 @@ public class HashtagServiceImpl implements HashtagService {
 	
 	@Autowired
 	private HashtagRepository hashtagRepository;
-	
-	/*@Override
+
+	@Override
+	public List<String> getTrendingHashtags() {
+		// TODO Auto-generated method stub
+		return hashtagRepository.getTrendingHashtag();
+	}
+}
+
+
+
+/*@Override
 	public Hashtags addHashtag(Hashtags hashtags) {
 		// TODO Auto-generated method stub
 		return hashtagRepository.save(hashtags);
@@ -33,9 +42,3 @@ public class HashtagServiceImpl implements HashtagService {
 		return hashtagRepository.getHashtagCount(hashtag);
 	}*/
 
-	@Override
-	public List<String> getTrendingHashtags() {
-		// TODO Auto-generated method stub
-		return hashtagRepository.getTrendingHashtag();
-	}
-}
